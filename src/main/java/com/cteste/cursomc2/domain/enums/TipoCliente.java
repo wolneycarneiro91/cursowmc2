@@ -1,6 +1,7 @@
 package com.cteste.cursomc2.domain.enums;
 
 public enum TipoCliente {
+	PESSOA(0, "Pessoa "),
 	PESSOAFISICA(1, "Pessoa Física"),
 	PESSOAJURIDICA(2,"Pssoa Jurídica");
 	
