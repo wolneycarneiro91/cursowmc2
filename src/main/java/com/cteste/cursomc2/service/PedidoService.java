@@ -13,7 +13,7 @@ import com.cteste.cursomc2.service.exceptions.ObjectNotFoundException;
 public class PedidoService {
 	@Autowired
 	private PedidoRepository repo;
-	public Pedido buscar(Integer id) {
+	public Pedido find(Integer id) {
 		Optional<Pedido> obj = repo.findById(id);
 		if(obj==null) {
 			throw new ObjectNotFoundException("Objeto não encontrado"+id+"Tipo"+Pedido.class.getName());

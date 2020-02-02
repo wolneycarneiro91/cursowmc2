@@ -13,7 +13,7 @@ import com.cteste.cursomc2.service.exceptions.ObjectNotFoundException;
 public class CategoriaService {
 	@Autowired
 	private CategoriaRepository repo;
-	public Categoria buscar(Integer id) {
+	public Categoria find(Integer id) {
 		Optional<Categoria> obj = repo.findById(id);
 		if(obj==null) {
 			throw new ObjectNotFoundException("Objeto não encontrado"+id+"Tipo"+Categoria.class.getName());
@@ -26,5 +26,10 @@ public class CategoriaService {
 		obj.setId(null);
 		return repo.save(obj);
 	}
+	
+	public Categoria update(Categoria obj) {	
+		find(obj.getId());
+		return repo.save(obj);
+	}	
 
 }

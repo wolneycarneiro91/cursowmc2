@@ -13,7 +13,7 @@ import com.cteste.cursomc2.service.exceptions.ObjectNotFoundException;
 public class ClienteService {
 	@Autowired
 	private ClienteRepository repo;
-	public Cliente buscar(Integer id) {
+	public Cliente find(Integer id) {
 		Optional<Cliente> obj = repo.findById(id);
 		if(obj==null) {
 			throw new ObjectNotFoundException("Objeto não encontrado"+id+"Tipo"+Cliente.class.getName());
