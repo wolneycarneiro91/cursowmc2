@@ -19,6 +19,7 @@ import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
 import com.cteste.cursomc2.domain.Cliente;
 import com.cteste.cursomc2.dto.ClienteDTO;
+import com.cteste.cursomc2.dto.ClienteNewDTO;
 import com.cteste.cursomc2.service.ClienteService;
 
 @RestController
@@ -50,7 +51,15 @@ public class ClienteResource {
 		Page<ClienteDTO> listDto = list.map(obj -> new ClienteDTO(obj));
 		return ResponseEntity.ok().body(listDto);
 	}	
-
+	@RequestMapping(method=RequestMethod.POST)
+	public ResponseEntity<Void> insert( @Valid @RequestBody ClienteNewDTO objDto){
+		Cliente obj = service.fromDTO(objDto);
+		obj = service.insert(obj);
+		URI uri = ServletUriComponentsBuilder.fromCurrentRequest()
+				.path("/{id}").buildAndExpand(obj.getId()).toUri();
+		return ResponseEntity.created(uri).build();
+		
+	}
 	@RequestMapping(value="/{id}",method=RequestMethod.PUT)
 	public ResponseEntity<Void> update(@Valid @RequestBody ClienteDTO objDto, @PathVariable Integer id){
 		Cliente obj = service.fromDTO(objDto);
