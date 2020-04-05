@@ -11,3 +11,4 @@ import com.cteste.cursomc2.domain.Categoria;
 public interface CategoriaRepository  extends JpaRepository<Categoria, Integer>{
 
 }
+// teste
